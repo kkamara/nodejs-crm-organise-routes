@@ -1,6 +1,6 @@
 ![nodejs-crm.png](https://github.com/kkamara/useful/blob/main/nodejs-crm.png?raw=true)
 
-# nodejs-crm [![Run CI](https://github.com/kkamara/nodejs-crm/actions/workflows/node.js.yml/badge.svg)](https://github.com/kkamara/nodejs-crm/actions/workflows/node.js.yml)
+# nodejs-crm
 
 Nodejs, Mysql, Redis, Reactjs.
 
