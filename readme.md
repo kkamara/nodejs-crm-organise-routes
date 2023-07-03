@@ -2,7 +2,7 @@
 
 # nodejs-crm
 
-(02-Jul-23) Nodejs, Mysql, Redis, Reactjs.
+(02-Jul-23) Built with www.github.com/kkamara/node-react-boilerplate
 
 ## Installation
 
