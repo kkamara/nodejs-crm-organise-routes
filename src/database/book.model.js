@@ -23,7 +23,27 @@ const Book = sequelize.define("books", {
      type: DataTypes.INTEGER,
    },
 });
-
+/*
+Foo.hasOne(Bar, {
+  foreignKey: {
+    name: 'my_foo_id',
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  onDelete: 'RESTRICT', //  RESTRICT, CASCADE, NO ACTION, SET DEFAULT and SET NULL
+  onUpdate: 'RESTRICT'
+});
+Bar.belongsTo(Foo);
+*/ /*
+A.belongsTo(B, {  });
+A.hasMany(B, {  });
+A.belongsToMany(B, { through: 'C',  });
+Movie.belongsToMany(Actor, {
+  through: ActorMovies,
+  uniqueKey: 'my_custom_unique',
+  // unique: false, // Doesn't set uniqueKey.
+});
+*/
 sequelize.sync().then(() => {
    console.log('Book table created successfully!');
    Book.create({
