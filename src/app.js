@@ -71,6 +71,7 @@ router.get('/test', async (req, res) => {
     );
 
     return res.render('home.pug', {
+        config,
         title: 'Homepage',
         data: [
             results, 

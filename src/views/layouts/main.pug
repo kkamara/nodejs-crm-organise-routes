@@ -1,6 +1,7 @@
 html
-  head
-    title My Site - #{title}
+  head(lang='en')
+    meta(charset='utf-8')
+    title #{title} | #{config.appName}
     block scripts
       //- script(src='/jquery.js')
   body
