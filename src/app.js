@@ -21,14 +21,6 @@ app.set('views', path.join(
     './views',
 ));
 
-/** serving react with static path */
-const buildPath = path.join(
-    __dirname,
-    '../',
-    'frontend',
-    'build'
-);
-app.use(express.static(buildPath));
 app.use(express.static("public"));
 
 if (config.nodeEnv === 'production') {
@@ -89,7 +81,7 @@ router.get('/test', async (req, res) => {
 app.use('/api/v1', router);
 
 app.all('*', (req, res) => {
-    res.status(200).sendFile(`/`, {root: buildPath});
+    res.status(200).send({ message: 'Success', });
 });
 
 if (config.nodeEnv === 'production') {
