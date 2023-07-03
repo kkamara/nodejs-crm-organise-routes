@@ -3,11 +3,10 @@ const cookieParser = require('cookie-parser');
 const sanitize = require('sanitize');
 const minifyHTML = require("express-minify-html")
 const express = require('express');
-const { QueryTypes, } = require('sequelize');
 const cons = require('consolidate');
 
 const config = require('./config');
-const db = require('./database');
+const routes = require('./routes');
 
 const app = express();
 
@@ -52,36 +51,9 @@ app.use((req, res, next) => {
     next();
 });
 
-const router = express.Router();
-router.get('/test', async (req, res) => {
-    let author = 'Jane Doe';
-    const [results, metadata] = await db.query(
-        "SELECT uid, title, author FROM books where author=? ORDER BY uid ASC LIMIT 1", 
-        {
-            replacements: [ author, ],
-            type: QueryTypes.SELECT,
-        },
-    );
-    const [results2, metadata2] = await db.query(
-        "SELECT uid, title, author FROM books where author=:author ORDER BY uid DESC LIMIT 1", 
-        {
-            replacements: { author, },
-            type: QueryTypes.SELECT,
-        },
-    );
+app.use('/', routes);
 
-    return res.render('home.pug', {
-        config,
-        title: 'Homepage',
-        data: [
-            results, 
-            results2, 
-        ],
-    });
-});
-app.use('/api/v1', router);
-
-app.all('*', (req, res) => {
+app.get('/test', (req, res) => {
     res.status(200).send({ message: 'Success', });
 });
 
