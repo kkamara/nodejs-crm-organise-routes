@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes, } = require("sequelize");
-const { log, } = require('console');
+const { DataTypes, } = require("sequelize");
+const { log, error, } = require('console');
 const sequelize = require('../database');
 
 const Book = sequelize.define("books", {
@@ -10,7 +10,8 @@ const Book = sequelize.define("books", {
    },
    title: {
      type: DataTypes.STRING,
-     allowNull: false,
+     allowNull: true,
+     defaultValue: 'Title not available',
    },
    author: {
      type: DataTypes.STRING,
@@ -45,15 +46,20 @@ Movie.belongsToMany(Actor, {
 });
 */
 sequelize.sync().then(() => {
-   console.log('Book table created successfully!');
-   Book.create({
+  log('Book table created successfully!');
+  Book.create({
     title: 'Book '+parseInt(Math.random() * 100),
     author: 'Jane Doe',
-   })
-    .then(() => { log('Book created.'); })
-    .catch(() => { log('Unable to create book.'); });
-}).catch((error) => {
-   console.error('Unable to create table : ', error);
+  })
+  .then(() => { log('Book created.'); })
+  .catch(() => { log('Unable to create book.'); });
+  Book.create({
+    author: 'Jane Doe',
+  })
+  .then(() => { log('Book created.'); })
+  .catch(() => { log('Unable to create book.'); });
+}).catch((err) => {
+  error('Unable to create table : ', err);
 });
 
 module.exports = Book;
