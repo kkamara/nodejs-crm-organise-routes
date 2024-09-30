@@ -2,7 +2,7 @@
 
 # nodejs-crm
 
-(02-Jul-2023) Built with www.github.com/kkamara/node-react-boilerplate
+(03-Jul-2023) Built with www.github.com/kkamara/nodejs-reactjs-boilerplate .
 
 ## Installation
 
